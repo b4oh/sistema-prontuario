@@ -1,4 +1,4 @@
-from db import criar_conexao
+from config.db import criar_conexao
 import bcrypt 
 
 def criar_usuario(email, password):
@@ -102,7 +102,7 @@ def deletar_usuario(id_usuario):
             conn.close()
 
 def buscar_usuario_por_email(email):
-    from db import criar_conexao
+    from config.db import criar_conexao
     conn = criar_conexao()
     if conn:
         try:

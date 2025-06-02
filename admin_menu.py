@@ -1,10 +1,10 @@
-from user_services import (
+from services.user_services import (
     criar_usuario,
     listar_usuarios,
     atualizar_usuario,
     deletar_usuario
 )
-from db import (
+from services.task_services import (
     criar_prontuario, listar_prontuarios, buscar_prontuario_por_id,
     atualizar_prontuario, deletar_prontuario, buscar_prontuarios_por_nome,
     listar_usuarios_com_prontuarios

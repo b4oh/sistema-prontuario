@@ -1,5 +1,5 @@
 import pwinput
-from user_services import autenticar_usuario, buscar_usuario_por_email
+from services.user_services import autenticar_usuario, buscar_usuario_por_email
 from admin_menu import menu_admin
 
 def menu_login():
