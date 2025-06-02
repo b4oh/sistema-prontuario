@@ -31,7 +31,6 @@ def autenticar_usuario(email, password):
     if conn:
         try:
             cursor = conn.cursor()
-            # Buscar o hash da senha no banco
             cursor.execute(
                 "SELECT password FROM usuarios WHERE email = %s",
                 (email,)

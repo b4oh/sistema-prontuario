@@ -7,7 +7,7 @@ def menu_login():
     print("         🔐  LOGIN DO SISTEMA  🔐".center(45))
     print("="*45)
     email = input("Usuário (email): ")
-    senha = pwinput.pwinput(prompt="Senha: ", mask="*")  # Mostra asteriscos
+    senha = pwinput.pwinput(prompt="Senha: ", mask="*")  
     print("="*45)
     print("Tentando autenticar...\n")
     if autenticar_usuario(email, senha):
