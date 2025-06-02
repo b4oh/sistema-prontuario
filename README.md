@@ -18,7 +18,7 @@ Este projeto é um sistema de gerenciamento de usuários e prontuários médicos
 ## 📁 Estrutura dos Arquivos
 
 ```
-AV3 - FINAL WAGNER/
+prontuarioEletronico/
 │
 ├── main.py                # Tela de login e entrada do sistema
 ├── admin_menu.py          # Menus de administração, usuários e prontuários
