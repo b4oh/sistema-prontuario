@@ -109,3 +109,20 @@ def listar_usuarios_com_prontuarios():
         finally:
             cursor.close()
             conn.close()
+
+def listar_prontuarios_recentes():
+    conn = criar_conexao()
+    if conn:
+        try:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM prontuarios ORDER BY id DESC")
+            prontuarios = cursor.fetchall()
+            for p in prontuarios:
+                print(f"ID: {p[0]}, Paciente: {p[1]}, Diagnóstico: {p[2]}, Tratamento: {p[3]}")
+            return prontuarios
+        except Exception as e:
+            print(f"Erro ao listar prontuários recentes: {e}")
+            return []
+        finally:
+            cursor.close()
+            conn.close()

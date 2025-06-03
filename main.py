@@ -4,7 +4,7 @@ from admin_menu import menu_admin
 
 def menu_login():
     print("\n" + "="*45)
-    print("         🔐  LOGIN DO SISTEMA  🔐".center(45))
+    print("         🔐  LOGIN   🔐".center(45))
     print("="*45)
     email = input("Usuário (email): ")
     senha = pwinput.pwinput(prompt="Senha: ", mask="*")  
@@ -13,7 +13,7 @@ def menu_login():
     if autenticar_usuario(email, senha):
         print("Bem-vindo ao sistema!")
         usuario = buscar_usuario_por_email(email)
-        print("Usuário encontrado:", usuario)
+        print(f"Usuário encontrado: ID={usuario[0]}, Email={usuario[1]}")
         if usuario:
             usuario_id = usuario[0]
             menu_admin(usuario_id)

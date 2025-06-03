@@ -1,5 +1,5 @@
+from services.security import criptografar, checar_password
 from config.db import criar_conexao
-import bcrypt 
 
 def criar_usuario(email, password):
     if not email.strip() or not password.strip():
@@ -10,7 +10,7 @@ def criar_usuario(email, password):
     if conn:
         try:
             cursor = conn.cursor()
-            hashpassword = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+            hashpassword = criptografar(password)
             query = "INSERT INTO usuarios (email, password) VALUES (%s, %s)"
             cursor.execute(query, (email, hashpassword))
             conn.commit()
@@ -36,7 +36,7 @@ def autenticar_usuario(email, password):
                 (email,)
             )
             usuario = cursor.fetchone()
-            if usuario and bcrypt.checkpw(password.encode('utf-8'), usuario[0].encode('utf-8')):
+            if usuario and checar_password(password, usuario[0]):
                 print("Login realizado com sucesso!")
                 return True
             else:
@@ -71,10 +71,12 @@ def atualizar_usuario(id_usuario, novo_username, nova_senha):
     if conn:
         try:
             cursor = conn.cursor()
+            nova_senha_criptografada = criptografar(nova_senha)
             cursor.execute(
-                "UPDATE usuarios SET email = %s, password = %s WHERE id = %s",
-                (novo_username, nova_senha, id_usuario)
+            "UPDATE usuarios SET email = %s, password = %s WHERE id = %s",
+            (novo_username, nova_senha_criptografada, id_usuario)
             )
+
             conn.commit()
             print("Usuário atualizado com sucesso!")
         except Exception as e:

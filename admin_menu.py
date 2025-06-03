@@ -7,7 +7,7 @@ from services.user_services import (
 from services.task_services import (
     criar_prontuario, listar_prontuarios, buscar_prontuario_por_id,
     atualizar_prontuario, deletar_prontuario, buscar_prontuarios_por_nome,
-    listar_usuarios_com_prontuarios
+    listar_usuarios_com_prontuarios, listar_prontuarios_recentes
 )
 
 def menu_admin(usuario_id):
@@ -74,7 +74,8 @@ def menu_prontuarios(usuario_id):
         print(" [4] Buscar prontuário por ID")
         print(" [5] Atualizar prontuário")
         print(" [6] Deletar prontuário")
-        print(" [7] Listar usuários com prontuários (INNER JOIN)")
+        print(" [7] Listar usuários com prontuários")
+        print(" [8] Listar prontuários mais recentes")
         print(" [0] Voltar")
         print("-"*45)
         opcao = input("Escolha uma opção: ")
@@ -122,6 +123,8 @@ def menu_prontuarios(usuario_id):
                 print("ID inválido.")
         elif opcao == "7":
             listar_usuarios_com_prontuarios()
+        elif opcao == "8":
+            (listar_prontuarios_recentes())
         elif opcao == "0":
             break
         else:
